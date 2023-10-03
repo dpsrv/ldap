@@ -1,0 +1,17 @@
+services:
+  ldap:
+    image: osixia/openldap:1.5.0
+    container_name: ldap
+    env_file: ${DPSRV_HOME}/rc/secrets/ldap/ldap.env
+    ports:
+      - "50389:389"  # LDAP
+      - "50636:636"  # LDAPS
+    volumes:
+      - ${DPSRV_HOME}/rc/secrets/ldap/slapd.d/:/etc/ldap/slapd.d/
+      - ${DPSRV_HOME}/var/ldap/:/var/lib/ldap/
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+networks:
+  default:
+    name: dpsrv
+    external: true
