@@ -11,6 +11,15 @@ services:
       - ${DPSRV_HOME}/var/ldap/:/var/lib/ldap/
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
+  ldapadmin:
+    image: osixia/phpldapadmin:0.9.0
+    container_name: ldapadmin
+    env_file: ${DPSRV_HOME}/rc/secrets/ldap/ldapadmin.env
+    ports:
+      - "50444:443"  # LDAP
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
 networks:
   default:
     name: dpsrv
