@@ -2,7 +2,9 @@ services:
   ldap:
     image: osixia/openldap:1.5.0
     container_name: dpsrv-ldap
-    env_file: ${DPSRV_HOME}/rc/secrets/ldap/ldap.env
+    env_file:
+      - ${DPSRV_HOME}/rc/secrets/ldap/ldap.env
+      - ${DPSRV_HOME}/local.env
     ports:
       - "50389:389"  # LDAP
       - "50636:636"  # LDAPS
