@@ -4,7 +4,7 @@ services:
     container_name: dpsrv-ldap
     env_file:
       - ${DPSRV_HOME}/rc/secrets/ldap/ldap.env
-      - ${DPSRV_HOME}/local.env
+      - ${DPSRV_HOME}/rc/secrets/local/${HOSTNAME}/local.env
     ports:
       - "50389:389"  # LDAP
       - "50636:636"  # LDAPS
