@@ -2,6 +2,7 @@ services:
   dpsrv-ldap:
     container_name: dpsrv-ldap-${tag:-latest}
     image: osixia/openldap:1.5.0
+    hostname: $HOSTNAME.dpsrv.me
     env_file:
       - ${DPSRV_HOME}/rc/secrets/ldap/ldap.env
       - ${DPSRV_HOME}/rc/secrets/local/${HOSTNAME}/local.env
